@@ -9,6 +9,10 @@ logging.basicConfig(level=logging.INFO)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    """
+    Renderiza a página inicial onde o usuário insere o URL do vídeo.
+    Ao enviar o formulário POST, redireciona para a rota 'options' com o URL do vídeo.
+    """
     if request.method == 'POST':
         video_url = request.form['video_url']
         return redirect(url_for('options', video_url=video_url))
@@ -16,6 +20,10 @@ def index():
 
 @app.route('/options', methods=['GET', 'POST'])
 def options():
+    """
+    Mostra as opções disponíveis para download do vídeo especificado pelo URL.
+    Permite selecionar o formato desejado e iniciar o download.
+    """
     video_url = request.args.get('video_url')
     app.logger.info(f"Received video URL: {video_url}")
 
@@ -65,6 +73,10 @@ def options():
 
 # Função de progresso do download
 def my_hook(d):
+    """
+    Função de progresso do download.
+    Registra o progresso do download e exibe mensagens de log.
+    """
     if d['status'] == 'finished':
         app.logger.info('Download completo!')
     elif d['status'] == 'downloading':

@@ -4,19 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download Options</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
 <body>
     <h1>Download Options</h1>
-    <form action="/options?video_url={{ video_url }}" method="POST">
-        <ul>
-            {% for i, ext, format_note, size in streams %}
-                <li>
-                    <input type="radio" id="stream{{ i }}" name="choice" value="{{ i }}" required>
-                    <label for="stream{{ i }}">{{ ext }} - {{ format_note }} - {{ size }} MB</label>
-                </li>
-            {% endfor %}
-        </ul>
-        <button type="submit">Download</button>
-    </form>
+
+    <div class="dropdown">
+        <button class="dropbtn" onclick="toggleOptions()">Opções disponíveis &#9660;</button>
+        <div id="dropdown-content" class="dropdown-content">
+            <form action="/options?video_url={{ video_url }}" method="POST">
+                <ul id="options-list" style="display: none;">
+                    {% for i, ext, format_note, size in streams %}
+                        <li>
+                            <input type="radio" id="stream{{ i }}" name="choice" value="{{ i }}" required>
+                            <label for="stream{{ i }}">{{ ext }} - {{ format_note }} - {{ size }} MB</label>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <button type="submit">Download</button>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>
