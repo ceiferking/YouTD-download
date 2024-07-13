@@ -1,7 +1,26 @@
-# Arquivos a serem ignorados
-arquivo_secreto.txt
-pasta_temp/
-*.log
+# Arquivos gerados pelo sistema operacional
+.DS_Store
 
-# Diretório que deve ser ignorado recursivamente
-images/
+# Arquivos de ambiente
+.env
+
+# Arquivos de cache e logs
+*.pyc
+__pycache__/
+instance/
+logs/
+
+# Arquivos de dados
+*.sqlite
+
+# Dependências e pacotes Python
+venv/
+env/
+*.pyc
+*.pyo
+*.pyd
+*.pyz
+*.pyw
+*.pyc
+*.pyo
+.env

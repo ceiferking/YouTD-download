@@ -50,10 +50,11 @@ def options():
         ext = fmt['ext']
         format_note = fmt.get('format_note', 'N/A')
         size = fmt.get('filesize', 'Desconhecido') // (1024 * 1024) if 'filesize' in fmt else 'Desconhecido'
-        
+        bitrate = fmt.get('tbr', 'Desconhecido')
+
         # Filtra apenas formatos mp4 e mp3 com tamanho conhecido
         if ext in ['mp4', 'mp3'] and format_note != 'N/A' and size != 'Desconhecido':
-            streams.append((i, ext, format_note, size))
+            streams.append((i, ext, format_note, size, bitrate))
 
     if request.method == 'POST':
         choice = int(request.form['choice'])

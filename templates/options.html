@@ -15,10 +15,10 @@
         <div id="dropdown-content" class="dropdown-content">
             <form action="/options?video_url={{ video_url }}" method="POST">
                 <ul id="options-list" style="display: none;">
-                    {% for i, ext, format_note, size in streams %}
+                    {% for i, ext, format_note, size, bitrate in streams %}
                         <li>
                             <input type="radio" id="stream{{ i }}" name="choice" value="{{ i }}" required>
-                            <label for="stream{{ i }}">{{ ext }} - {{ format_note }} - {{ size }} MB</label>
+                            <label for="stream{{ i }}">{{ ext }} - {{ format_note }} - {{ size }} MB - {{ bitrate }} Kbps</label>
                         </li>
                     {% endfor %}
                 </ul>
