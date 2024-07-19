@@ -6,6 +6,10 @@
 
 # Arquivos de cache e logs
 *.pyc
+cache
+/cache
+/__pycache__
+/__pycache__/
 __pycache__/
 instance/
 logs/
